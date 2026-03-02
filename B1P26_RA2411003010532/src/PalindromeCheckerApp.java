@@ -1,55 +1,51 @@
-import java.util.Deque;
-import java.util.ArrayDeque;
+import java.util.Scanner;
+import java.util.Stack;
+
+class PalindromeChecker {
+
+    public boolean checkPalindrome(String input) {
+
+        if (input == null) {
+            return false;
+        }
+
+        String cleanedInput = input.replaceAll("\\s+", "").toLowerCase();
+
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < cleanedInput.length(); i++) {
+            stack.push(cleanedInput.charAt(i));
+        }
+
+        for (int i = 0; i < cleanedInput.length(); i++) {
+            if (cleanedInput.charAt(i) != stack.pop()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        String input = "refer";
+        Scanner scanner = new Scanner(System.in);
+        PalindromeChecker checker = new PalindromeChecker();
 
-        Deque<Character> deque = new ArrayDeque<>();
+        System.out.println("=== Palindrome Checker (UC11) ===");
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
 
-        for (char c : input.toCharArrimport java.util.Scanner;
+        boolean result = checker.checkPalindrome(input);
 
-        public class PalindromeCheckerApp {
-            public static void main(String[] args) {
-                Scanner sc = new Scanner(System.in);
-                System.out.print("Enter Input : ");
-                String input = sc.nextLine();
-                String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-                boolean isPalindrome = true;
-                for (int i = 0; i < normalized.length() / 2; i++) {
-
-                    if (normalized.charAt(i) !=
-                            normalized.charAt(normalized.length() - 1 - i)) {
-                        isPalindrome = false;
-                        break;
-                    }
-                }
-
-                System.out.println("Input : " + input);
-                System.out.println("Is Palindrome? : " + isPalindrome);
-
-                sc.close();
-            }
-        }ay()) {
-            deque.addLast(c);
+        if (result) {
+            System.out.println("Result: The string is a Palindrome.");
+        } else {
+            System.out.println("Result: The string is NOT a Palindrome.");
         }
 
-        boolean isPalindrome = true;
-
-        while (deque.size() > 1) {
-
-            char first = deque.removeFirst();
-            char last = deque.removeLast();
-
-            if (first != last) {
-                isPalindrome = false;
-                break;
-            }
-        }
-
-        System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome);
+        scanner.close();
     }
 }
