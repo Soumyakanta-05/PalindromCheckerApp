@@ -11,4 +11,4 @@ public class PalindromeCheckerApp {
         UseCase1PalindromeApp entry = new UseCase1PalindromeApp();
     }
 
-}
+}//UC1
